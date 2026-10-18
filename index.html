@@ -7,10 +7,10 @@
 <meta name="description" content="Ajukan reservasi buka puasa bersama di Ceker & Kerang Pedas Lambe Turah. Pilih cabang, tanggal, dan menu, lalu konfirmasi melalui WhatsApp.">
 <title>Reservasi Bukber | Ceker & Kerang Pedas Lambe Turah</title>
 <!--
-  RESERVASI BUKBER — INDEX.HTML V1.0
+  RESERVASI BUKBER — INDEX.HTML V1.1
   Adaptasi desain Web Order v9.3.1.
   Gratis, tanpa database / Google Apps Script.
-  File pendamping: menu.json, folder images/, reservation.js (dibuat pada tahap berikut).
+  File pendamping: menu.json, folder images/, reservation.js V1.0.
   Jangan mengganti index.html milik Delivery/Takeaway yang sudah berjalan.
 -->
 <style>
@@ -22,17 +22,51 @@ main{max-width:1080px;margin:auto;padding:15px 13px 115px}.panel{background:whit
 .sticky{position:fixed;bottom:0;left:0;right:0;z-index:30;border-top:1px solid var(--line);background:#fffffff2;backdrop-filter:blur(10px);padding:10px 14px;padding-bottom:calc(10px + env(safe-area-inset-bottom))}.sticky-inner{max-width:1050px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}.sticky small{color:#777;display:block;margin-bottom:2px}.sticky strong{font-size:18px}.sticky a{border-radius:10px;background:var(--yellow);text-decoration:none;font-weight:900;padding:12px;font-size:12px;white-space:nowrap}
 .modal-backdrop{position:fixed;inset:0;background:#0009;z-index:100;display:flex;align-items:center;justify-content:center;padding:14px}.modal{width:min(100%,480px);max-height:91vh;overflow-y:auto;background:#fff;padding:19px;border-radius:22px;box-shadow:0 20px 65px #0004}.modal-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.modal-top strong{font-size:20px}.close{border:0;background:#f1f1f1;width:36px;height:36px;border-radius:50%;font-size:22px}.modal-item{display:flex;align-items:center;gap:13px;margin-bottom:17px}.modal-item img{width:94px;height:94px;border-radius:13px;object-fit:cover;background:#f5f5f5}.modal-item strong{display:block;line-height:1.4}.modal-item small{color:#777;display:block;margin:6px 0}.modal-price{font-size:19px;font-weight:950;color:var(--red)}.choice-title{font-size:13px;font-weight:900;margin:16px 0 9px}.choices{display:grid;gap:8px}.choices.two{grid-template-columns:1fr 1fr}.choice{display:flex;gap:10px;align-items:center;border:1px solid #e4e4e4;border-radius:12px;padding:12px;font-size:13px;cursor:pointer}.choice:has(input:checked){border:2px solid var(--red);background:#fff2f1;padding:11px}.choice input{accent-color:var(--red)}.modal-quantity{display:flex;justify-content:space-between;align-items:center;margin:19px 0;font-weight:900}.modal-quantity button{width:36px;height:36px;background:#f7f7f7;border:1px solid #e2e2e2;border-radius:10px;font-size:20px}.modal-quantity span{padding:0 12px}.modal-total{display:flex;justify-content:space-between;align-items:center;background:#f7f7f7;border-radius:12px;padding:14px;font-weight:900}.modal-total strong{font-size:20px;color:var(--red)}.modal-confirm{display:block;width:100%;margin-top:13px;padding:14px;background:var(--yellow);border:0;border-radius:12px;font-weight:900}
 @media(max-width:850px){.grid-products{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:600px){main{padding:12px 10px 110px}.panel{padding:17px 13px;border-radius:17px}.grid-products{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo-wrap{height:140px}.product-body{padding:10px}.product-name{font-size:13px}.product-desc{font-size:10px}.product-price{font-size:17px}.booking-grid,.fields,.pay-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.hero-logo{max-height:155px}.hero-steps{gap:5px}.hero-step{font-size:10px}}
+
+/* Ramadan V1.1 — dekorasi SVG dan CSS tanpa gambar eksternal / library */
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:24px 16px 36px;background:radial-gradient(ellipse at 50% -10%,#602c31 0%,#351d23 40%,#171717 85%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(circle at 15% 28%,#ffd22914 0%,transparent 28%),radial-gradient(circle at 89% 23%,#ffd2290d 0%,transparent 29%)}
+.ramadan-sky{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}.ramadan-sky svg{display:block;width:100%;height:100%}.ramadan-sky .sky-star{fill:#fce3a1;opacity:.82}.ramadan-sky .mosque{fill:#b8834d;opacity:.18}.ramadan-sky .crescent{fill:#ffd776;opacity:.92}
+.ramadan-greeting{position:relative;margin:14px auto 4px;max-width:620px}.ramadan-greeting .arabic{font-family:Georgia,"Times New Roman",serif;font-size:clamp(20px,3.5vw,30px);font-weight:700;line-height:1.5;color:#ffdf93;direction:rtl}.ramadan-greeting .welcome{margin:5px 0;color:#f7cb72;letter-spacing:2px;text-transform:uppercase;font-size:clamp(12px,2.1vw,15px);font-weight:850}.ramadan-greeting .greeting-line{color:#f8f0df;font-weight:750;font-size:clamp(13px,2.2vw,17px);line-height:1.5}.ramadan-greeting .divider-gold{width:90px;height:2px;background:linear-gradient(90deg,transparent,#f4c86c,transparent);margin:12px auto 8px}
+.hero .hero-logo{position:relative;margin:14px auto 14px;width:min(85%,420px);max-height:158px}
+.hero .hero-badge{position:relative;box-shadow:0 4px 18px #0002}.hero h1{position:relative;font-size:clamp(23px,4vw,35px);margin:15px auto 7px}.hero p{position:relative;max-width:590px}.hero-steps{position:relative;margin-top:17px}
+.ramadan-note{display:flex;gap:10px;align-items:flex-start;background:linear-gradient(100deg,#fff9ed,#fff);border:1px solid #f1e1c3;border-left:4px solid #c99341;border-radius:13px;padding:13px 15px;margin:0 0 15px;font-size:12px;line-height:1.65;color:#654c26}.ramadan-note strong{color:#704221}
+@media(max-width:600px){.hero{padding:19px 14px 29px}.hero .hero-logo{width:min(88%,370px);max-height:128px;margin:11px auto}.ramadan-greeting{margin-top:10px}.ramadan-greeting .divider-gold{margin:8px auto 6px}.hero h1{margin-top:10px}.hero p{font-size:12px}.hero-steps{margin-top:14px}.ramadan-sky .mosque{opacity:.13}}
+@media(prefers-reduced-motion:reduce){.hero,.hero *{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <header class="hero">
-  <div class="hero-badge">🌙 RESERVASI BUKBER RAMADAN</div>
-  <img class="hero-logo" src="images/logo-lambe-turah.jpg" alt="Logo asli Ceker & Kerang Pedas Lambe Turah" width="470" height="175">
+  <!-- Hiasan vektor dekoratif: ringan, tanpa permintaan gambar tambahan -->
+  <div class="ramadan-sky" aria-hidden="true">
+    <svg viewBox="0 0 1200 580" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs><symbol id="ramStar" viewBox="0 0 20 20"><path d="M10 0l2.2 7.8L20 10l-7.8 2.2L10 20l-2.2-7.8L0 10l7.8-2.2Z"/></symbol></defs>
+      <path class="crescent" d="M145 76a48 48 0 1 0 52 72 43 43 0 0 1-52-72Z"/>
+      <use href="#ramStar" x="230" y="80" width="12" height="12" class="sky-star"/>
+      <use href="#ramStar" x="1020" y="92" width="15" height="15" class="sky-star"/>
+      <use href="#ramStar" x="960" y="164" width="8" height="8" class="sky-star"/>
+      <use href="#ramStar" x="265" y="215" width="9" height="9" class="sky-star"/>
+      <use href="#ramStar" x="890" y="57" width="8" height="8" class="sky-star"/>
+      <g class="mosque">
+        <path d="M0 580V490h95v-61h18v-20h14v20h18v61h50v-65c0-44 41-76 74-95 34 19 74 51 74 95v65h58v-94h19v-21h15v21h19v94h60v-75c0-37 39-69 70-89 31 20 70 52 70 89v75h65v-94h19v-21h15v21h19v94h57v-68c0-41 37-69 71-90 34 21 71 49 71 90v68h57v-60h20v-21h15v21h20v60h100v90Z"/>
+        <path d="M256 323h27v-24h-27zM601 318h27v-29h-27zM946 320h26v-26h-26z"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-badge">🌙 RAMADAN 1448 H · RESERVASI BUKBER</div>
+  <div class="ramadan-greeting">
+    <div class="arabic" lang="ar">رَمَضَانُ مُبَارَكٌ</div>
+    <div class="welcome">Marhaban ya Ramadan</div>
+    <div class="greeting-line">Selamat Menunaikan Ibadah Puasa 1448 H</div>
+    <div class="divider-gold"></div>
+  </div>
+  <img class="hero-logo" src="images/logo-lambe-turah.jpg" alt="Logo asli Ceker & Kerang Pedas Lambe Turah" width="470" height="175" fetchpriority="high">
   <h1>Bukber Makin Seru, <span>Tanpa Ribet!</span></h1>
-  <p>Tentukan tempat dan tanggal, pilih menu favoritmu, lalu ajukan reservasi lewat WhatsApp. Konfirmasi tempat dari admin dulu, baru lakukan pembayaran.</p>
+  <p>Hangatnya kebersamaan di bulan Ramadan. Ajak keluarga, sahabat, dan rekan kerja berbuka dengan menu favorit Lambe Turah. Pilih jadwal dan menu, lalu ajukan reservasi melalui WhatsApp.</p>
   <div class="hero-steps"><span class="hero-step"><b>01</b> Jadwal</span><span class="hero-step"><b>02</b> Menu</span><span class="hero-step"><b>03</b> Pembayaran</span><span class="hero-step"><b>04</b> WhatsApp</span></div>
 </header>
 <main>
+  <div class="ramadan-note"><span aria-hidden="true">✨</span><div><strong>Selamat datang di reservasi bukber Lambe Turah!</strong> Pilih tanggal dan menu sesuai selera. Ketersediaan tempat dikonfirmasi admin sebelum pembayaran.</div></div>
   <section class="panel" id="bookingSection">
     <h2>📍 Rencana Bukbermu</h2>
     <p class="help">Pilih cabang dan tanggal. Admin akan memastikan ketersediaan tempat untuk rombonganmu.</p>
